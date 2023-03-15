@@ -13,6 +13,7 @@ const AUTH_ENDPOINT = "https://accounts.spotify.com/authorize"
 const  RESPONSE_TYPE = "token"
 
 const [token, setToken] = useState("")
+const [loading, setLoading] = useState(false)
 const [topArtist, setTopArtist] = useState([])
 
 
@@ -38,14 +39,41 @@ const logout = () => {
   window.localStorage.removeItem("token")
 }
 
-const getTopArtist = (token) => {
 
-  spotifyApi.getMyTopArtists().then((response)=> {
+//  GET users all time top artists 
+const getTopArtist = () => {
+
+  spotifyApi.getMyTopArtists({time_range: 'long_term'}).then((response)=> {
     
+    setLoading(true)
     setTopArtist(response.items)
   })
+
 }
-console.log(topArtist)
+
+// GET users top artists of the last six months
+const getTopArtistSixMonths = () => {
+
+  spotifyApi.getMyTopArtists({time_range: 'medium_term'}).then((response)=> {
+  
+    setLoading(true)
+    setTopArtist(response.items)
+  })
+
+}
+
+// GET users top artists of the last 4 weeks
+const getTopArtistFourWeeks = () => {
+
+  spotifyApi.getMyTopArtists({time_range: 'short_term'}).then((response)=> {
+   
+    setLoading(true)
+    setTopArtist(response.items)
+  })
+
+}
+
+
   return (
     <div className="App">
       <h1>Flyerify</h1>
@@ -53,11 +81,22 @@ console.log(topArtist)
       : 
       
       <div>
+        {!loading ? <div>loading...</div> :  
+        <div>
         <h2>{topArtist[0].name}</h2>
         <h3>{topArtist[1].name}</h3>
         <h4>{topArtist[2].name}</h4>
         <h5>{topArtist[3].name}</h5>
-
+        <div>
+          <br></br>
+          <button onClick={getTopArtistFourWeeks}>4 Weeks</button>
+          <button onClick={getTopArtistSixMonths}>Six Months</button>
+          <button onClick={getTopArtist}>All Time</button>
+        </div>
+        <br></br>
+        </div>
+}
+       
 
 
  <button onClick={logout}>Logout</button>
