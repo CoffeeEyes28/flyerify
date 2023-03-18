@@ -2,7 +2,7 @@ import logo from "./logo.svg";
 import "./App.css";
 import React, { useState, useEffect } from "react";
 import SpotifyWebApi from "spotify-web-api-js";
-import { Row, Col, Container } from "react-bootstrap";
+import { Row, Col, Container, Button } from "react-bootstrap";
 import { format } from "date-fns";
 
 const spotifyApi = new SpotifyWebApi();
@@ -15,6 +15,7 @@ function App() {
   const RESPONSE_TYPE = "token";
 
   const formatedDate = format(new Date(), "MMMM, do");
+  
 
   const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
@@ -77,53 +78,82 @@ function App() {
 
   return (
     <div className="App">
-      <Row>
+      <div className="d-flex flex-column justify-content-center text-center">
+     
         <h1>Flyerify</h1>
-      </Row>
+     
       <hr></hr>
       {!token ? (
         <a
-          href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${SCOPE}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
-        >
-          Login to Spotify
+        href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${SCOPE}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
+      >
+        <Button>
+        
+          
+        
+        Login to Spotify
+        </Button>
         </a>
       ) : (
-        <Container fluid>
+       <div className="d-flex flex-column justify-content-center align-items-center" >
           {!loading ? (
-            <div>loading...</div>
+            <div>preparing your lineup...</div>
           ) : (
-            <Row>
-              <Col>
+            <div>
+
+             
                 <div className="flyer">
-                  <h2>{topArtist[0].name}</h2>
-                  <br></br>
-                  <h3>{topArtist[1].name}</h3>
-                  <br></br>
-                  <h4>{topArtist[2].name}</h4>
-                  <br></br>
-                  <h5>{topArtist[3].name}</h5>
-                  <br></br>
+               
+                  <p className="header">Flyerify presents</p>
+                  
+                  <p className="artist-one">{topArtist[0].name}</p>
+                  
+                  <p className="artist-two">{topArtist[1].name}</p>
+                
+                  <p className="artist-three">{topArtist[2].name}</p>
+                
+                  <p className="artist-four">{topArtist[3].name}</p>
+               
                   <p>{formatedDate}</p>
                   <p>$10</p>
                   <p>Doors 7pm</p>
                   <p>Ask a Punk</p>
+                  
                 </div>
-
-                <div>
-                  <button onClick={getTopArtistFourWeeks}>4 Weeks</button>
-
-                  <button onClick={getTopArtistSixMonths}>Six Months</button>
-
-                  <button onClick={getTopArtist}>All Time</button>
-                </div>
+               
+             
+                
 
                 <br></br>
-              </Col>
-            </Row>
+                
+
+                  <div className="d-flex flex-row justify-content-around">
+                  <Button  onClick={getTopArtistFourWeeks}>4 Weeks</Button>
+             
+
+                  <Button onClick={getTopArtistSixMonths}>Six Months</Button>
+               
+
+                 
+                  <Button  onClick={getTopArtist}>All Time</Button>
+                  </div>
+                
+
+             
+                  
+            
+
+             </div>
           )}
-          <button onClick={logout}>Logout</button>
-        </Container>
+
+          <br></br>
+          
+          <Button onClick={logout}>Logout</Button>
+         
+       </div>
       )}
+
+      </div>
     </div>
   );
 }
