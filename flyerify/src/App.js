@@ -87,7 +87,7 @@ function App() {
         <a
         href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${SCOPE}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
       >
-        <Button>
+        <Button className="bg-success">
         
           
         
@@ -128,14 +128,14 @@ function App() {
                 
 
                   <div className="d-flex flex-row justify-content-around">
-                  <Button  onClick={getTopArtistFourWeeks}>4 Weeks</Button>
+                  <Button className="bg-dark" onClick={getTopArtistFourWeeks}>4 Weeks</Button>
              
 
-                  <Button onClick={getTopArtistSixMonths}>Six Months</Button>
+                  <Button className="bg-dark" onClick={getTopArtistSixMonths}>Six Months</Button>
                
 
                  
-                  <Button  onClick={getTopArtist}>All Time</Button>
+                  <Button className="bg-dark" onClick={getTopArtist}>All Time</Button>
                   </div>
                 
 
@@ -148,7 +148,7 @@ function App() {
 
           <br></br>
           
-          <Button onClick={logout}>Logout</Button>
+          <Button className="bg-success"onClick={logout}>Logout</Button>
          
        </div>
       )}

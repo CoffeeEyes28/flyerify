@@ -5,7 +5,7 @@ html{
 
 body {
 
-  font-family: 'Permanent Marker', cursive;
+  font-family: 'Rubik Spray Paint', cursive;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -15,7 +15,8 @@ h1{
 }
 
 .flyer {
-  background-color: #B29EEb;
+  font-size: 1.4rem;
+  background-image: url("./Assets/Images/flyer-bg-1.png");
   padding: 20px;
   width: 300px;
   max-width: 320px;
@@ -25,22 +26,24 @@ h1{
 
 
  .header{
-font-size: 2.2rem;
+  background-color: white;
+font-size: 2rem;
 }
 
 .artist-one{
-  font-size: 1.8rem;
+ 
+  font-size: 1.9rem;
 }
 
 .artist-two{
-  font-size: 1.6rem;
+  font-size: 1.7rem;
 }
 
 .artist-three{
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
 .artist-four{
-  font-size: 1.2rem;
+  font-size: 1.4rem;
 }
 
