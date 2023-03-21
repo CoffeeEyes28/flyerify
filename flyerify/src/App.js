@@ -33,10 +33,23 @@ function App() {
         .find((elem) => elem.startsWith("access_token"))
         .split("=")[1];
 
+       function addHours(date, hours){
+        date.setTime(date.getTime() + hours * 60 * 60 * 1000);
+
+        return date;
+       }
+
+      let expire = addHours(new Date(), 1);
+      
+
       window.location.hash = "";
       window.localStorage.setItem("token", token);
+
+     
+      window.localStorage.setItem("expire", expire )
     }
 
+    checkExpire();
     setToken(token);
     spotifyApi.setAccessToken(token);
     getTopArtist();
@@ -46,6 +59,7 @@ function App() {
   const logout = () => {
     setToken("");
     window.localStorage.removeItem("token");
+    window.localStorage.removeItem("expire")
   };
 
   //  GET users all time top artists
@@ -76,6 +90,20 @@ function App() {
       });
   };
 
+  const checkExpire = () => {
+    
+    let currentTime = new Date()
+    let expireTime = localStorage.getItem("expire")
+    
+
+    if (expireTime < currentTime ){
+      setToken("")
+      window.localStorage.removeItem("token");
+      window.localStorage.removeItem("expire")
+
+    }
+  }
+ 
   return (
     <div className="App">
       <div className="d-flex flex-column justify-content-center text-center">
