@@ -93,7 +93,7 @@ function App() {
   const checkExpire = () => {
     
     let currentTime = new Date()
-    let expireTime = localStorage.getItem("expire")
+    let expireTime = new Date(localStorage.getItem("expire"))
     
 
     if (expireTime < currentTime ){
