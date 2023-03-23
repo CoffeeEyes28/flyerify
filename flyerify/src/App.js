@@ -133,7 +133,7 @@ function App() {
                 <div className="flyer">
                
                   <p className="header">Flyerify presents</p>
-                  
+                  <div className="artist-bg">
                   <p className="artist-one">{topArtist[0].name}</p>
                   
                   <p className="artist-two">{topArtist[1].name}</p>
@@ -141,7 +141,7 @@ function App() {
                   <p className="artist-three">{topArtist[2].name}</p>
                 
                   <p className="artist-four">{topArtist[3].name}</p>
-               
+                  </div>
                   <p>{formatedDate}</p>
                   <p>$10</p>
                   <p>Doors 7pm</p>

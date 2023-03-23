@@ -18,32 +18,32 @@ h1{
   font-size: 1.4rem;
   background-image: url("./Assets/Images/flyer-bg-1.png");
   padding: 20px;
-  width: 300px;
-  max-width: 320px;
+  width: 350px;
 
 }
+
 
 
 
  .header{
-  background-color: white;
-font-size: 2rem;
+
+font-size: 2.4rem;
 }
 
 .artist-one{
  
-  font-size: 1.9rem;
+  font-size: 2rem;
 }
 
 .artist-two{
-  font-size: 1.7rem;
+  font-size: 1.9rem;
 }
 
 .artist-three{
-  font-size: 1.6rem;
+  font-size: 1.8rem;
 }
 
 .artist-four{
-  font-size: 1.4rem;
+  font-size: 1.6rem;
 }
 
