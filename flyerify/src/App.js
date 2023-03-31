@@ -5,7 +5,10 @@ import SpotifyWebApi from "spotify-web-api-js";
 import { Row, Col, Container, Button } from "react-bootstrap";
 import { format } from "date-fns";
 
+const Chance = require('chance');
+
 const spotifyApi = new SpotifyWebApi();
+const chance = new Chance();
 
 function App() {
   const CLIENT_ID = process.env.REACT_APP_CLIENT_ID;
@@ -20,6 +23,7 @@ function App() {
   const [token, setToken] = useState("");
   const [loading, setLoading] = useState(false);
   const [topArtist, setTopArtist] = useState([]);
+  const [address, setAddress] = useState("");
 
   // Set's user token based off url after user has logged in
   useEffect(() => {
@@ -48,11 +52,15 @@ function App() {
      
       window.localStorage.setItem("expire", expire )
     }
+    
+    const location = chance.address({short_suffix: true});
 
     checkExpire();
     setToken(token);
+    setAddress(location);
     spotifyApi.setAccessToken(token);
     getTopArtist();
+    
   }, []);
 
   // Removes user token from local storage
@@ -104,13 +112,14 @@ function App() {
     }
   }
  
+ 
   return (
     <div className="App">
       <div className="d-flex flex-column justify-content-center text-center">
      
         <h1>Flyerify</h1>
      
-      <hr></hr>
+      <br></br>
       {!token ? (
         <a
         href={`${AUTH_ENDPOINT}?client_id=${CLIENT_ID}&scope=${SCOPE}&redirect_uri=${REDIRECT_URI}&response_type=${RESPONSE_TYPE}`}
@@ -133,6 +142,7 @@ function App() {
                 <div className="flyer">
                
                   <p className="header">Flyerify presents</p>
+                  <br></br>
                   <div className="artist-bg">
                   <p className="artist-one">{topArtist[0].name}</p>
                   
@@ -141,12 +151,18 @@ function App() {
                   <p className="artist-three">{topArtist[2].name}</p>
                 
                   <p className="artist-four">{topArtist[3].name}</p>
-                  </div>
-                  <p>{formatedDate}</p>
-                  <p>$10</p>
-                  <p>Doors 7pm</p>
-                  <p>Ask a Punk</p>
                   
+                  </div>
+                  <br></br>
+                  <div className="d-flex flex-row justify-content-evenly">
+                  <p>{formatedDate}</p> 
+                  <p>Doors 7pm</p>
+                  </div>
+
+                  <div className="d-flex flex-row justify-content-evenly">
+                  <p>$10</p>
+                  <p>{address}</p>
+                  </div>
                 </div>
                
              
@@ -155,7 +171,7 @@ function App() {
                 <br></br>
                 
 
-                  <div className="d-flex flex-row justify-content-around">
+                  <div className="d-flex flex-row justify-content-evenly">
                   <Button className="bg-dark" onClick={getTopArtistFourWeeks}>4 Weeks</Button>
              
 

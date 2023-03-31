@@ -11,14 +11,20 @@ body {
 }
 
 h1{
-  font-size: 2.6rem;
+  font-size: 5.25rem;
+  
 }
 
 .flyer {
   font-size: 1.4rem;
   background-image: url("./Assets/Images/flyer-bg-1.png");
-  padding: 20px;
-  width: 350px;
+  padding: 0.48rem;
+ width: 320px;
+ height: 568px;
+ max-width: 100%;
+ margin: 0 auto;
+
+  
 
 }
 
@@ -27,23 +33,30 @@ h1{
 
  .header{
 
-font-size: 2.4rem;
+font-size: 2.5rem;
+
 }
+
+
 
 .artist-one{
  
-  font-size: 2rem;
+  font-size: 2.25rem;
+  padding: 0.2rem;
 }
 
 .artist-two{
   font-size: 1.9rem;
+  padding: 0.2rem;
 }
 
 .artist-three{
   font-size: 1.8rem;
+  padding: 0.2rem;
 }
 
 .artist-four{
   font-size: 1.6rem;
+  padding: 0.2rem;
 }
 
