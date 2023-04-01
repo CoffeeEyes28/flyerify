@@ -74,8 +74,10 @@ function App() {
     
     if(length > 30){
       setFontSize('1.6rem')
+    }else{
+      setFontSize('2.2rem')
     }
-    setFontSize('2.2rem')
+    
 
 
     }
