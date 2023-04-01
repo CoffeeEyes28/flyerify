@@ -24,6 +24,7 @@ function App() {
   const [loading, setLoading] = useState(false);
   const [topArtist, setTopArtist] = useState([]);
   const [address, setAddress] = useState("");
+  const [fontSize, setFontSize] = useState('2.2rem')
 
   // Set's user token based off url after user has logged in
   useEffect(() => {
@@ -52,6 +53,8 @@ function App() {
      
       window.localStorage.setItem("expire", expire )
     }
+
+    
     
     const location = chance.address({short_suffix: true});
 
@@ -62,6 +65,23 @@ function App() {
     getTopArtist();
     
   }, []);
+
+  // waits for load and then determines headliner fontSize by length of string
+
+  useEffect(() => {
+    if(loading){
+    const length = document.querySelector(".artist-one").textContent.length
+    
+    if(length > 30){
+      setFontSize('1.6rem')
+    }
+    setFontSize('2.2rem')
+
+
+    }
+  }, [loading, topArtist])
+
+
 
   // Removes user token from local storage
   const logout = () => {
@@ -75,6 +95,7 @@ function App() {
     spotifyApi.getMyTopArtists({ time_range: "long_term" }).then((response) => {
       setLoading(true);
       setTopArtist(response.items);
+      
     });
   };
 
@@ -111,7 +132,10 @@ function App() {
 
     }
   }
- 
+
+  
+  
+
  
   return (
     <div className="App">
@@ -140,12 +164,12 @@ function App() {
 
              
                 <div className="flyer">
-               
+                
                   <p className="header">Flyerify presents</p>
-                  <br></br>
-                  <div className="artist-bg">
-                  <p className="artist-one">{topArtist[0].name}</p>
                   
+                  <div className="artist-bg">
+                  <p className="artist-one" style={{fontSize}}>{topArtist[0].name}</p>
+
                   <p className="artist-two">{topArtist[1].name}</p>
                 
                   <p className="artist-three">{topArtist[2].name}</p>
@@ -154,6 +178,7 @@ function App() {
                   
                   </div>
                   <br></br>
+                  <div className="show-info">
                   <div className="d-flex flex-row justify-content-evenly">
                   <p>{formatedDate}</p> 
                   <p>Doors 7pm</p>
@@ -162,6 +187,7 @@ function App() {
                   <div className="d-flex flex-row justify-content-evenly">
                   <p>$10</p>
                   <p>{address}</p>
+                  </div>
                   </div>
                 </div>
                
