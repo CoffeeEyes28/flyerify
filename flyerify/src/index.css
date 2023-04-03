@@ -18,7 +18,7 @@ h1{
 
 .flyer {
   position: relative;
-  color: white;
+  color: #E8D1D9;
   background-image: url("./Assets/Images/flyer-bg-1.png");
  width: 320px;
  height: 568px;
@@ -41,9 +41,8 @@ padding: 0.2rem;
 .artist-bg{
   width: 308px;
   height: 308px;
-  background-image: url("./Assets/Images/paper-bg.png");
   margin: 0 auto;
-  color: black;
+  color: #FFEBE6
 }
 
 
@@ -83,6 +82,7 @@ padding: 0.2rem;
 
 .show-info{
  position: absolute;
+ padding-bottom: 30px;
  bottom: 0;
  right: 0;
  left: 0;

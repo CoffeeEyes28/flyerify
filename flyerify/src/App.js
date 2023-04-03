@@ -70,7 +70,8 @@ function App() {
 
   useEffect(() => {
     if(loading){
-    const length = document.querySelector(".artist-one").textContent.length
+
+    const length = topArtist[0].length
     
     if(length > 30){
       setFontSize('1.6rem')
